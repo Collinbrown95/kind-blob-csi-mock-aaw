@@ -893,7 +893,7 @@ function SettingsController($scope, SharedService) {
         auth: 'auth', region: '', bucket: '', entered_bucket: '', selected_bucket: '', view: 'folder', delimiter: '/', prefix: '',
     };
     $scope.settings.mfa = { use: 'no', code: '' };
-    $scope.settings.cred = { accessKeyId: 'local-identity', secretAccessKey: 'local-credential', sessionToken: '' };
+    $scope.settings.cred = { accessKeyId: '', secretAccessKey: '', sessionToken: '' };
     $scope.settings.stscred = null;
 
     // TODO: at present the Settings dialog closes after credentials have been supplied
