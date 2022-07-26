@@ -7,3 +7,4 @@ resources:
   - s3proxy-cm.yaml
   - s3proxy-nginx-cm.yaml
   - aws-js-s3-explorer
+  - mc-cli.yaml  # debug pod with minio client

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mc-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: mc-cli
+  template:
+    metadata:
+      labels:
+        tier: mc-cli
+    spec:
+      containers:
+      - name: minio-cli-container
+        image: minio/mc
+        command: ["sleep"]
+        args: ["864000"]
+        resources:
+          limits:
+            cpu: 500m
+            memory: 0.5Gi
+          requests:
+            cpu: 500m
+            memory: 0.5Gi
