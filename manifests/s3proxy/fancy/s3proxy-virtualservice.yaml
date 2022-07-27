@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: s3-virtualservice
+  namespace: aaw-fc
+spec:
+  gateways:
+  - kubeflow/kubeflow-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/
+    name: s3-route
+    rewrite:
+      uri: /s3/
+    route:
+    - destination:
+        host: s3proxy-web.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /s3/
+    name: s3-redirect
+    redirect:
+      uri: /s3/aaw-fc/index.html
