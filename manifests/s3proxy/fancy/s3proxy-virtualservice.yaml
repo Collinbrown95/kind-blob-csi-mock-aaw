@@ -42,13 +42,25 @@ spec:
         host: s3proxy-web.aaw-fc.svc.cluster.local
         port:
           number: 80
-  # Rewrite URL + redirect to s3proxy webapp service
+  # [Standard] Rewrite URL + redirect to s3proxy webapp service
   - match:
     - uri:
         prefix: /s3/aaw-fc/standard
     name: s3-route-s3proxy-web-requests
     rewrite:
       uri: /standard
+    route:
+    - destination:
+        host: s3proxy.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  # [Premium] Rewrite URL + redirect to s3proxy webapp service
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/premium
+    name: s3-route-s3proxy-web-requests
+    rewrite:
+      uri: /premium
     route:
     - destination:
         host: s3proxy.aaw-fc.svc.cluster.local
@@ -76,11 +88,21 @@ spec:
     name: s3-redirect
     redirect:
       uri: /s3/aaw-fc/index.html
-  # If the referrer was the s3proxy webpage, rewrite the URL to contain the /s3/ prefix and route directly to the appropriate service
+  # [Standard] If the referrer was the s3proxy webpage, rewrite the URL to contain the /s3/ prefix and route directly to the appropriate service
   - match:
-    - headers:
-        referer:
-          exact: https://kubeflow.aaw-dev.cloud.statcan.ca/s3/aaw-fc/index.html
-    name: s3-redirect-s3proxy
+    - uri:
+        prefix: /standard
+    name: s3-redirect-standard-s3proxy
+    # headers:
+    #   request:
+    #     remove:
+    #       - "authorization"
     redirect:
       uri: /s3/aaw-fc/standard
+  # [Premium] If the referrer was the s3proxy webpage, rewrite the URL to contain the /s3/ prefix and route directly to the appropriate service
+  - match:
+    - uri:
+        prefix: /premium
+    name: s3-redirect-premium-s3proxy
+    redirect:
+      uri: /s3/aaw-fc/premium
