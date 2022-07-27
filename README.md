@@ -26,8 +26,15 @@ Heyyoo
 
 **Steps to reprouce** (just mocking the s3proxy part w/ filesystem back-end):
 
-1. `make kind-create` (create kind cluster)
-2. `kustomize build manifests/s3proxy/fancy | kubectl apply -f -`
+1. `make kind-create && kubectl create ns aaw-fc` (create kind cluster)
+2. `kustomize build manifests/s3proxy/fancy | tee manifest.yaml | kubectl apply -f -`
+
+**Temporary instructions for local kind cluster debugging** (remove this documentation once solution is found)
+2. comment out the networkpolicy and virtualservice from the `kustomization.yaml` in `manifests/s3proxy/fancy` - kind cluster doesn't have istio crd installed and network policies are unecessary for local debugging
+3. make minio bucket by opening a shell into `minio-cli` pod and running  `mc alias set s3proxy http://s3proxy:80` then `mc mb s3proxy/standard`.
+4. for local example, make the s3proxy filesystem pod use `/tmp` as its storage directory b/c the container process has write permissions in `/tmp`.
+
+
 
 **Dynamically listing buckets**
 Not possible according to https://github.com/aws/aws-sdk-js/blob/307e82673b48577fce4389e4ce03f95064e8fe0d/doc-src/templates/api-versions/model_documentor.rb#L264-L265 and https://stackoverflow.com/a/29950510 - need to 
