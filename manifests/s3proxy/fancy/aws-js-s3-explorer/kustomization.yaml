@@ -3,6 +3,7 @@ kind: Kustomization
 
 configMapGenerator:
 - name: s3proxy-aws-js-explorer
+  namespace: aaw-fc
   files:
   - explorer.js
   - explorer.css

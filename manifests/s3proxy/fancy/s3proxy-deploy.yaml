@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: s3proxy
+  namespace: aaw-fc
   labels:
     app: s3proxy
 spec:
