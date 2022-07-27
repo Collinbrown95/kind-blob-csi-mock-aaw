@@ -22,6 +22,15 @@ Heyyoo
 (base) jovyan@jupyter-7577f4977c-flvw4:~$ 
 ```
 
+# S3 Proxy UI Debugging
+
+**Steps to reprouce** (just mocking the s3proxy part w/ filesystem back-end):
+
+1. `make kind-create` (create kind cluster)
+2. `kustomize build manifests/s3proxy/fancy | kubectl apply -f -`
+
+**Dynamically listing buckets**
+Not possible according to https://github.com/aws/aws-sdk-js/blob/307e82673b48577fce4389e4ce03f95064e8fe0d/doc-src/templates/api-versions/model_documentor.rb#L264-L265 and https://stackoverflow.com/a/29950510 - need to 
 
 # Note: kind instead of k3d
 
