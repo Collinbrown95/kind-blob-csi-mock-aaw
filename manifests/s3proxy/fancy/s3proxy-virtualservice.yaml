@@ -11,8 +11,54 @@ spec:
   http:
   - match:
     - uri:
+        prefix: /s3/aaw-fc/index.html
+    name: s3-route-static-files
+    rewrite:
+      uri: /s3/index.html
+    route:
+    - destination:
+        host: s3proxy-web.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/explorer.js
+    name: s3-route-static-files
+    rewrite:
+      uri: /s3/explorer.js
+    route:
+    - destination:
+        host: s3proxy-web.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/explorer.css
+    name: s3-route-static-files
+    rewrite:
+      uri: /s3/explorer.css
+    route:
+    - destination:
+        host: s3proxy-web.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  # Rewrite URL + redirect to s3proxy webapp service
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/standard
+    name: s3-route-s3proxy-web-requests
+    rewrite:
+      uri: /standard
+    route:
+    - destination:
+        host: s3proxy.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  # Rewrite URL + redirect to s3proxy service
+  - match:
+    - uri:
         prefix: /s3/aaw-fc/
-    name: s3-route
+    name: s3-route-s3proxy-requests
     rewrite:
       uri: /s3/
     route:
@@ -21,8 +67,20 @@ spec:
         port:
           number: 80
   - match:
-    - uri:
-        prefix: /s3/
+    - headers:
+        referer:
+          exact: https://kubeflow.aaw-dev.cloud.statcan.ca/_/s3/?ns=aaw-fc
+    - headers:
+        referer:
+          exact: https://kubeflow.aaw.cloud.statcan.ca/_/s3/?ns=aaw-fc
     name: s3-redirect
     redirect:
       uri: /s3/aaw-fc/index.html
+  # If the referrer was the s3proxy webpage, rewrite the URL to contain the /s3/ prefix and route directly to the appropriate service
+  - match:
+    - headers:
+        referer:
+          exact: https://kubeflow.aaw-dev.cloud.statcan.ca/s3/aaw-fc/index.html
+    name: s3-redirect-s3proxy
+    redirect:
+      uri: /s3/aaw-fc/standard
