@@ -4,10 +4,14 @@ metadata:
   name: s3-virtualservice
   namespace: aaw-fc
 spec:
+  exportTo:
+    - aaw-fc
+    - istio-system
+    - ingress-general-system
   gateways:
   - kubeflow/kubeflow-gateway
   hosts:
-  - '*'
+  - '*'  # TODO: change this to the relevant hosts
   http:
   - match:
     - uri:
@@ -26,6 +30,17 @@ spec:
     name: s3-route-static-files
     rewrite:
       uri: /s3/explorer.js
+    route:
+    - destination:
+        host: s3proxy-web.aaw-fc.svc.cluster.local
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /s3/aaw-fc/background.js
+    name: s3-route-static-files
+    rewrite:
+      uri: /s3/background.js
     route:
     - destination:
         host: s3proxy-web.aaw-fc.svc.cluster.local

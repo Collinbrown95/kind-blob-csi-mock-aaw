@@ -1,0 +1,1 @@
+console.log("Successfully loaded background script")
