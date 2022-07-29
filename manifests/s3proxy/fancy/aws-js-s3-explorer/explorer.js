@@ -19,6 +19,16 @@
 /* eslint no-plusplus: "off" */
 /* eslint-env es6 */
 
+// make sure sw are supported
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+        .register('sw_modify_header.js')
+        .then(reg => console.log("Service Worker: Registered"))
+        .catch(err => console.log(`Service Worker: Error: ${err}`))
+    })
+}
+
 const s3ExplorerColumns = {
     check: 0, object: 1, folder: 2, date: 3, timestamp: 4, storageclass: 5, size: 6,
 };

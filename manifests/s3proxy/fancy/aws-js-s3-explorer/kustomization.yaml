@@ -6,6 +6,6 @@ configMapGenerator:
   namespace: aaw-fc
   files:
   - explorer.js
-  - background.js
+  - sw_modify_header.js
   - explorer.css
   - index.html

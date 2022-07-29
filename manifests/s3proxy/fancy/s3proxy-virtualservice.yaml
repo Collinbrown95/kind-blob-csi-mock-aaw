@@ -37,10 +37,10 @@ spec:
           number: 80
   - match:
     - uri:
-        prefix: /s3/aaw-fc/background.js
+        prefix: /s3/aaw-fc/sw_modify_header.js
     name: s3-route-static-files
     rewrite:
-      uri: /s3/background.js
+      uri: /s3/sw_modify_header.js
     route:
     - destination:
         host: s3proxy-web.aaw-fc.svc.cluster.local
