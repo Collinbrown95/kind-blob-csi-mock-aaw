@@ -41,7 +41,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
             - name: aws-js-explorer
-              mountPath: /etc/nginx/html/s3/
+              mountPath: /etc/nginx/html/s3/aaw-fc/
           ports:
             - name: http
               containerPort: 8080
