@@ -43,13 +43,13 @@ permissions and limitations under the License.
                     <fieldset>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">S3 Explorer: Settings</h4>
+                            <h4 data-i18n base-value="settings" class="modal-title">S3 Explorer: Settings</h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-md-18">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <p><b>Bucket</b>: Please indicate which region and S3 bucket you want to explore.</p>
+                                        <p data-i18n base-value="bucket"><b>Bucket</b>: Please indicate which region and S3 bucket you want to explore.</p>
                                         <div class="input-group bottom-marg-10" style="display: none;">
                                             <span class="input-group-addon">Region</span>
                                             <select name="region" class="form-control" ng-model="settings.region">
@@ -111,29 +111,29 @@ permissions and limitations under the License.
                                             <span class="input-group-addon">Session Token</span>
                                             <input name="token" type="text" ng-model="settings.cred.sessionToken" class="form-control" ng-disabled="settings.auth!='temp'" placeholder="session token" required/>
                                         </div>
-                                        <div class="input-group bottom-marg-10" ng-show="settings.auth=='auth'">
+                                        <!-- <div class="input-group bottom-marg-10" ng-show="settings.auth=='auth'">
                                             <span class="input-group-addon">Multi-Factor</span>
                                             <select name="county" class="form-control" ng-model="settings.mfa.use" required>
                                                 <option value="no">No (I do not need to provide an MFA code)</option>
                                                 <option value="yes">Yes (I need to provide an MFA code)</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <div class="input-group bottom-marg-10" ng-show="settings.mfa.use=='yes'">
                                             <span class="input-group-addon">MFA Code</span>
                                             <input name="token" type="text" ng-model="settings.mfa.code" class="form-control" ng-disabled="settings.mfa.use=='no'" placeholder="MFA code" required/>
                                         </div>
                                         <br>
-                                        <p><b>Options</b>: S3 Explorer can show your S3 bucket contents folder-by-folder or it can show
+                                        <p data-i18n base-value="options"><b>Options</b>: S3 Explorer can show your S3 bucket contents folder-by-folder or it can show
                                         a flat view of the entire bucket. Also, if you want to start in a folder that is not the root folder then enter the initial prefix below, for example <i>songs/</i>.</p>
                                         <div class="input-group bottom-marg-10">
-                                            <span class="input-group-addon">Initial View</span>
+                                            <span data-i18n base-value="initialView" class="input-group-addon">Initial View</span>
                                             <select name="view" class="form-control" ng-model="settings.delimiter" required>
-                                                <option value="/">Folder (shows folder-by-folder)</option>
-                                                <option value="">Bucket (shows entire bucket contents)</option>
+                                                <option data-i18n base-value="folderDescription" value="/">Folder (shows folder-by-folder)</option>
+                                                <option data-i18n base-value="bucketDescription" value="">Bucket (shows entire bucket contents)</option>
                                             </select>
                                         </div>
                                         <div class="input-group bottom-marg-10">
-                                            <span class="input-group-addon">Initial Prefix</span>
+                                            <span data-i18n base-value="initialPrefix" class="input-group-addon">Initial Prefix</span>
                                             <input name="prefix" type="text" ng-model="settings.prefix" class="form-control" placeholder="prefix e.g. songs/"/>
                                         </div>
                                     </div>
@@ -143,8 +143,8 @@ permissions and limitations under the License.
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary"><i class='fa fa-cloud-download-alt fa-lg'></i>&nbsp;Query S3</button>
+                                    <button data-i18n base-value="cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <button data-i18n base-value="queryS3" type="submit" class="btn btn-primary"><i class='fa fa-cloud-download-alt fa-lg'></i>&nbsp;Query S3</button>
                                 </div>
                             </div>
                         </div>
@@ -162,18 +162,18 @@ permissions and limitations under the License.
                     <fieldset>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">S3 Explorer: New Folder</h4>
+                            <h4 data-i18n base-value="newFolder" class="modal-title">S3 Explorer: New Folder</h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-md-18">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <p>Please enter the relative path of the S3 folder to add, for example folder-01 or wallpaper/animals/dogs</p>
+                                        <p data-i18n base-value="newFolderExplanation">Please enter the relative path of the S3 folder to add, for example folder-01 or wallpaper/animals/dogs</p>
                                         <div class="input-group bottom-marg-10">
                                             <span class="input-group-addon">{{add_folder.view_prefix}}</span>
                                             <input name="folder" ng-model="add_folder.entered_folder" type="text" class="form-control" placeholder="folder" ng-required="true"/>
                                         </div>
-                                        <p>The new S3 folder will be {{add_folder.view_prefix}}{{add_folder.entered_folder}}.</p>
+                                        <p><b>New Folder / Nouveau Dossier: </b>{{add_folder.view_prefix}}{{add_folder.entered_folder}}.</p>
                                     </div>
                                 </div>
                             </div>
@@ -181,8 +181,8 @@ permissions and limitations under the License.
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary"><i class='fa fa-folder-plus fa-lg'></i>&nbsp;Add Folder</button>
+                                    <button data-i18n base-value="cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <button data-i18n base-value="addFolder" type="submit" class="btn btn-primary"><i class='fa fa-folder-plus fa-lg'></i>&nbsp;Add Folder</button>
                                 </div>
                             </div>
                         </div>
@@ -306,12 +306,12 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">S3 Explorer: Delete {{trash.count}} objects</h4>
+                    <h4 class="modal-title"><b>S3 Explorer: </b>Delete {{trash.count}} objects / Supprimer {{trash.count}} objets</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-18">
                         <div class="panel-body">
-                            <p>
+                            <p data-i18n base-value="confirmDelete">
                             Please confirm that you want to delete the following objects from S3.
                             </p>
                             <br/>
@@ -319,13 +319,13 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                                 <thead id="trash-thead">
                                     <tr>
                                         <th></th>
-                                        <th>Object</th>
-                                        <th>Folder</th>
-                                        <th>Last Modified</th>
-                                        <th>Timestamp</th>
-                                        <th>Class</th>
-                                        <th>Size</th>
-                                        <th>Result</th>
+                                        <th data-i18n base-value="object">Object</th>
+                                        <th data-i18n base-value="folder">Folder</th>
+                                        <th data-i18n base-value="lastModified">Last Modified</th>
+                                        <th data-i18n base-value="timestamp">Timestamp</th>
+                                        <th data-i18n base-value="class">Class</th>
+                                        <th data-i18n base-value="size">Size</th>
+                                        <th data-i18n base-value="result">Result</th>
                                     </tr>
                                 </thead>
                                 <tbody id="trash-tbody">
@@ -347,7 +347,7 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                 <div class="modal-footer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button id="trash-btn-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button data-i18n base-value="cancel" id="trash-btn-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             <button id="trash-btn-delete" type="submit" class="btn btn-danger" ng-disabled="trash.trashing"><i class="fa fa-trash-alt fa-lg"></i>&nbsp;{{trash.button}}</button>
                         </div>
                     </div>
@@ -362,20 +362,20 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">S3 Explorer: Error ({{error.code}})</h4>
+                    <h4 class="modal-title"><b>S3 Explorer:</b> Error / Erreur ({{error.code}})</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-18">
                         <div class="panel-body">
-                            <p>An error was detected: {{error.message}}</p>
+                            <p><b>An error was detected / Une erreur a été détectée: </b>{{error.message}}</p>
                             <div class="collapse" id="collapseAdvanced">
                                 <div class="well-sm">
                                     <table class="table table-bordered table-hover table-striped" id="error-table">
                                         <thead id="error-thead">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Key</th>
-                                                <th>Value</th>
+                                                <th data-i18n base-value="key">Key</th>
+                                                <th data-i18n base-value="value">Value</th>
                                             </tr>
                                         </thead>
                                         <tbody id="error-tbody">
@@ -394,8 +394,8 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                 <div class="modal-footer">
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseAdvanced" aria-expanded="false" aria-controls="collapseAdvanced"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Advanced</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button data-i18n base-value="advanced" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseAdvanced" aria-expanded="false" aria-controls="collapseAdvanced"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Advanced</button>
+                            <button data-i18n base-value="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -412,22 +412,22 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Upload to:&nbsp;{{upload.title}}</h4>
+                    <h4 class="modal-title"><b>Upload to / télécharger vers: </b>&nbsp;{{upload.title}}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-18">
                         <div class="panel-body">
-                            <p>
+                            <p data-i18n base-value="confirmUpload">
                             Please confirm that you want to upload the following files to S3.
                             </p>
                             <table class="table table-bordered table-hover table-striped" id="upload-table">
                                 <thead id="upload-thead">
                                     <tr>
                                         <th></th>
-                                        <th>Filename</th>
+                                        <th data-i18n base-value="filename">Filename</th>
                                         <th>Type</th>
-                                        <th>Size</th>
-                                        <th>Progress</th>
+                                        <th data-i18n base-value="size">Size</th>
+                                        <th data-i18n base-value="progress">Progress</th>
                                     </tr>
                                 </thead>
                                 <tbody id="upload-tbody">
@@ -442,9 +442,8 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>
-                            The selected files will be uploaded to {{upload.title}}
-                            </p>
+                            <p data-i18n base-value="uploadDestination">The selected files will be uploaded to:</p>
+                            <p>{{upload.title}}</p>
                         </div>
                     </div>
                 </div>
@@ -452,7 +451,7 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <!-- <button id="upload-btn-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
-                            <button id="upload-btn-cancel" type="button" class="btn btn-default">Cancel</button>
+                            <button data-i18n base-value="cancel" id="upload-btn-cancel" type="button" class="btn btn-default">Cancel</button>
                             <button id="upload-btn-upload" type="submit" class="btn btn-primary" ng-disabled="upload.uploading"><i class="fa fa-cloud-upload-alt fa-lg"></i>&nbsp;{{upload.button}}</button>
                         </div>
                     </div>
@@ -489,21 +488,21 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                             <div>
                                 <!-- Info/Refresh/Settings buttons -->
                                 <div class="btn-group">
-                                    <span id="bucket-plus" style="cursor: pointer;" class="btn fa fa-folder-plus fa-2x" ng-hide="!view.settings" title="New folder" data-target="#AddFolderModal" data-toggle="modal"></span>
-                                    <span id="bucket-upload" style="cursor: pointer;" class="btn fa fa-cloud-upload-alt fa-2x" ng-hide="!view.settings" ng-click="upload()" title="Upload files"></span>
-                                    <span id="bucket-trash" style="cursor: pointer;" class="btn fa fa-trash-alt fa-2x" title="Delete {{view.keys_selected.length}} selected object(s)" ng-hide="!view.settings || !view.keys_selected.length" ng-disabled="!view.keys_selected.length" ng-click="trash()"></span>
+                                    <span id="bucket-plus" style="cursor: pointer;" class="btn fa fa-folder-plus fa-2x" ng-hide="!view.settings" title="New folder / Nouveau fichier" data-target="#AddFolderModal" data-toggle="modal"></span>
+                                    <span id="bucket-upload" style="cursor: pointer;" class="btn fa fa-cloud-upload-alt fa-2x" ng-hide="!view.settings" ng-click="upload()" title="Upload files / Télécharger les fichiers"></span>
+                                    <span id="bucket-trash" style="cursor: pointer;" class="btn fa fa-trash-alt fa-2x" title="Delete {{view.keys_selected.length}} selected object(s) / Supprimer {{view.keys_selected.length}}  les objet(s) sélectionnés" ng-hide="!view.settings || !view.keys_selected.length" ng-disabled="!view.keys_selected.length" ng-click="trash()"></span>
                                     <!-- <span id="bucket-info" style="cursor: pointer;" class="btn fa fa-info-circle fa-2x" title="Info" data-target="#InfoModal" data-toggle="modal"></span> -->
-                                    <span id="bucket-loader" style="cursor: pointer;" class="btn fa fa-sync fa-2x" ng-hide="!view.settings" ng-click="refresh()" title="Refresh"></span>
-                                    <span id="bucket-settings" style="cursor: pointer;" class="btn fa fa-cog fa-2x" title="Settings" data-target="#SettingsModal" data-toggle="modal"></span>
-                                    <span id="bucket-language" style="cursor: pointer;" class="btn fa fa-globe fa-2x" title="Toggle Language" ng-click="toggle()"></span>
+                                    <span id="bucket-loader" style="cursor: pointer;" class="btn fa fa-sync fa-2x" ng-hide="!view.settings" ng-click="refresh()" title="Refresh / Rafraîchir"></span>
+                                    <span id="bucket-settings" style="cursor: pointer;" class="btn fa fa-cog fa-2x" title="Settings / Paramètres" data-target="#SettingsModal" data-toggle="modal"></span>
+                                    <span id="bucket-language" style="cursor: pointer;" class="btn fa fa-globe fa-2x" title="Toggle Language / Changer de Langue" ng-click="toggle()"></span>
                                 </div>
                                 <!-- Record count -->
                                 <div class="btn-group" ng-hide="!view.settings || view.keys_selected.length > 0">
-                                    <span id="badgecount" style="cursor: default;" class="btn badge pull-right" title="Object count">{{view.objectCount}}</span>
+                                    <span id="badgecount" style="cursor: default;" class="btn badge pull-right" title="Object count / Nombre d'objets">{{view.objectCount}}</span>
                                 </div>
                                 <!-- Record/checked count -->
                                 <div class="btn-group" ng-hide="!view.settings || view.keys_selected.length == 0">
-                                    <span id="badgecount" style="cursor: default;" class="btn badge pull-right" title="Selected object count">{{view.keys_selected.length}} of {{view.objectCount}}</span>
+                                    <span id="badgecount" style="cursor: default;" class="btn badge pull-right" title="Selected object count / nombre d'objets sélectionnés">{{view.keys_selected.length}} of / de {{view.objectCount}}</span>
                                 </div>
                             </div>
                         </div>
@@ -514,13 +513,13 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                         <table class="table table-bordered table-hover table-striped" style="width:100%" id="s3objects-table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Select</th>
-                                    <th>Object</th>
-                                    <th>Folder</th>
-                                    <th>Last Modified</th>
-                                    <th>Timestamp</th>
-                                    <th>Class</th>
-                                    <th>Size</th>
+                                    <th data-i18n base-value="select" class="text-center">Select</th>
+                                    <th data-i18n base-value="object">Object</th>
+                                    <th data-i18n base-value="folder">Folder</th>
+                                    <th data-i18n base-value="lastModified">Last Modified</th>
+                                    <th data-i18n base-value="timestamp">Timestamp</th>
+                                    <th data-i18n base-value="class">Class</th>
+                                    <th data-i18n base-value="size">Size</th>
                                 </tr>
                             </thead>
                             <tbody id="s3objects-tbody"></tbody>

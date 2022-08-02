@@ -26,7 +26,36 @@
 // |_| |_|  \___|_| |_|\___|_| |_|
 
 frenchConfig = {
-    pageTitle: "Application d'exploration de fichiers"
+    pageTitle: "Application d'exploration de fichiers",
+    settings: "AAW Storage Explorer: Paramètres",
+    initialView: "vue initiale",
+    initialPrefix: "préfixe initial",
+    folderDescription: "Dossier (montre dossier par dossier)",
+    bucketDescription: "S3 Bucket (montre le contenu entier du S3 bucket)",
+    cancel: "annuler",
+    queryS3: "interroger S3",
+    newFolder: "AAW Storage Explorer: Nouveau dossier",
+    newFolderExplanation: "Veuillez entrer le chemin relatif du dossier S3 à ajouter, par exemple dossier-01 ou papier-peint/animaux/chiens.",
+    addFolder: "ajouter un dossier",
+    confirmDelete: "Veuillez confirmer que vous voulez supprimer les objets suivants de S3.",
+    bucket: "<b>Bucket</b>: Veuillez indiquer la région et le S3 bucket que vous souhaitez explorer.",
+    options: "<b>Options</b>: AAW Storage Explorer peut afficher le contenu de votre S3 bucket dossier par dossier ou afficher une vue plate de l'ensemble du bucket. En outre, si vous voulez commencer dans un dossier qui n'est pas le dossier racine, entrez le préfixe initial ci-dessous, par exemple <i>song</i>.",
+    object: "Objet",
+    folder: "Dossier",
+    lastModified: "Dernière Modification",
+    timestamp: "Horodatage",
+    class: "Classe",
+    size: "Taille",
+    result: "Résultat",
+    key: "Clé",
+    value: "Valeur",
+    advanced: "Avancé",
+    close: "Fermer",
+    confirmUpload: "Veuillez confirmer que vous voulez télécharger les fichiers suivants vers S3.",
+    filename: "Nom de Fichier",
+    progress: "Progrès",
+    uploadDestination: "Les fichiers sélectionnés seront téléchargés vers: ",
+    select: "Sélectionnez"
 }
 
 //                   _ _     _     
@@ -36,7 +65,36 @@ frenchConfig = {
 //  \___|_| |_|\__, |_|_|___/_| |_|
 //             |___/               
 englishConfig = {
-    pageTitle: "AAW Storage Explorer"
+    pageTitle: "AAW Storage Explorer",
+    settings: "AAW Storage Explorer: Settings",
+    initialView: "Initial View",
+    initialPrefix: "Initial Prefix",
+    folderDescription: "Folder (shows folder-by-folder)",
+    bucketDescription: "Bucket (shows entire bucket contents)",
+    cancel: "Cancel",
+    queryS3: "Query S3",
+    newFolder: "AAW Storage Explorer: New Folder",
+    newFolderExplanation: "Please enter the relative path of the S3 folder to add, for example folder-01 or wallpaper/animals/dogs.",
+    addFolder: "Add folder",
+    confirmDelete: "Please confirm that you want to delete the following objects from S3.",
+    bucket: "<b>Bucket</b>: Please indicate which region and S3 bucket you want to explore.",
+    options: "<b>Options</b>: AAW Storage Explorer can show your S3 bucket contents folder-by-folder or it can show a flat view of the entire bucket. Also, if you want to start in a folder that is not the root folder then enter the initial prefix below, for example <i>songs/</i>.",
+    object: "object",
+    folder: "folder",
+    lastModified: "Last Modified",
+    timestamp: "Timestamp",
+    class: "Class",
+    size: "Size",
+    result: "Result",
+    key: "Key",
+    value: "Value",
+    advanced: "Advanced",
+    close: "Close",
+    confirmUpload: "Please confirm that you want to upload the following files to S3.",
+    filename: "Filename",
+    progress: "Progress",
+    uploadDestination: "The selected files will be uploaded to:",
+    select: "Select"
 }
 
 // make sure sw are supported
