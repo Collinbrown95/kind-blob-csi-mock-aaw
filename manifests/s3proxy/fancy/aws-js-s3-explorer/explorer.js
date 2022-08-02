@@ -19,6 +19,26 @@
 /* eslint no-plusplus: "off" */
 /* eslint-env es6 */
 
+//   __                     _     
+//  / _|_ __ ___ _ __   ___| |__  
+// | |_| '__/ _ \ '_ \ / __| '_ \ 
+// |  _| | |  __/ | | | (__| | | |
+// |_| |_|  \___|_| |_|\___|_| |_|
+
+frenchConfig = {
+    pageTitle: "Application d'exploration de fichiers"
+}
+
+//                   _ _     _     
+//   ___ _ __   __ _| (_)___| |__  
+//  / _ \ '_ \ / _` | | / __| '_ \ 
+// |  __/ | | | (_| | | \__ \ | | |
+//  \___|_| |_|\__, |_|_|___/_| |_|
+//             |___/               
+englishConfig = {
+    pageTitle: "AAW Storage Explorer"
+}
+
 // make sure sw are supported
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -472,6 +492,26 @@ function ViewController($scope, SharedService) {
             SharedService.trashObjects($scope.view.settings.bucket, $scope.view.keys_selected);
         }
     };
+
+    $scope.english = true  // TODO: consider fetching language from browser API or setting user's choice in localstorage
+    const translatePhrase = (key) => {
+        DEBUG.log("scope is ", $scope.english)
+        if ($scope.english) {
+            return englishConfig[key]
+        } else {
+            return frenchConfig[key]
+        }
+    }
+    $scope.toggle = () => {
+        $scope.english = !$scope.english;
+
+        const replaceText = (el) => {
+            el.innerHTML = translatePhrase(el.attributes["base-value"].nodeValue)
+        }
+        
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach(el => replaceText(el))
+    }
 
     $scope.running = () => $bl.hasClass('fa-spin');
 

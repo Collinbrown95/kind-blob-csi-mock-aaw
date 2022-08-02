@@ -35,7 +35,6 @@ permissions and limitations under the License.
 <!-- <style media="screen" type="text/css"> * { outline: 1px red solid; } </style> -->
 
 <body>
-
     <!-- Modal Settings dialog -->
     <div id="SettingsModal" class="modal fade" ng-controller="SettingsController" tabindex="-1">
         <div class="modal-dialog">
@@ -474,9 +473,7 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                         <!-- Bucket selection and breadcrumbs -->
                         <div class="btn-group pull-left">
                             <!-- Utility name -->
-                            <div class="title pull-left">
-                                AAW Storage Explorer&nbsp;
-                            </div>
+                            <div data-i18n base-value="pageTitle" class="title pull-left">AAW Storage Explorer</div>
                             <!-- Bucket breadcrumbs -->
                             <div class="pull-right" ng-hide="!view.settings">
                                 <ul id="breadcrumb" class="breadcrumb pull-right">
@@ -498,6 +495,7 @@ Please see the project <a target="_blank" href="https://github.com/awslabs/aws-j
                                     <!-- <span id="bucket-info" style="cursor: pointer;" class="btn fa fa-info-circle fa-2x" title="Info" data-target="#InfoModal" data-toggle="modal"></span> -->
                                     <span id="bucket-loader" style="cursor: pointer;" class="btn fa fa-sync fa-2x" ng-hide="!view.settings" ng-click="refresh()" title="Refresh"></span>
                                     <span id="bucket-settings" style="cursor: pointer;" class="btn fa fa-cog fa-2x" title="Settings" data-target="#SettingsModal" data-toggle="modal"></span>
+                                    <span id="bucket-language" style="cursor: pointer;" class="btn fa fa-globe fa-2x" title="Toggle Language" ng-click="toggle()"></span>
                                 </div>
                                 <!-- Record count -->
                                 <div class="btn-group" ng-hide="!view.settings || view.keys_selected.length > 0">
