@@ -101,11 +101,11 @@ permissions and limitations under the License.
                                         <p ng-hide="settings.auth=='anon'"><b>Credentials</b>: this web page uses the <a href="http://aws.amazon.com/sdk-for-browser/" target="_blank">AWS SDK for JavaScript in the Browser</a>. Your AWS credentials are kept in memory and used by the SDK for authentication. Your secret access key is used to sign API requests but it is <b>not</b> sent to the S3 service.</p>
                                         <div class="input-group bottom-marg-10" ng-hide="settings.auth=='anon'">
                                             <span class="input-group-addon">Access Key ID</span>
-                                            <input name="accesskey" type="text" ng-model="settings.cred.accessKeyId" class="form-control" ng-disabled="settings.auth=='anon'" placeholder="access key id" required/>
+                                            <input name="accesskey" type="text" ng-model="settings.cred.accessKeyId" ng-init="settings.cred.accessKeyId='changeme'" class="form-control" ng-disabled="settings.auth=='anon'" placeholder="access key id" required/>
                                         </div>
                                         <div class="input-group bottom-marg-10" ng-hide="settings.auth=='anon'">
                                             <span class="input-group-addon">Secret Access Key</span>
-                                            <input name="secretkey" type="password" ng-model="settings.cred.secretAccessKey" class="form-control" ng-disabled="settings.auth=='anon'" placeholder="secret access key" required/>
+                                            <input name="secretkey" type="password" ng-model="settings.cred.secretAccessKey" ng-init="settings.cred.secretAccessKey='changeme'" class="form-control" ng-disabled="settings.auth=='anon'" placeholder="secret access key" required/>
                                         </div>
                                         <div class="input-group bottom-marg-10" ng-show="settings.auth=='temp'">
                                             <span class="input-group-addon">Session Token</span>
