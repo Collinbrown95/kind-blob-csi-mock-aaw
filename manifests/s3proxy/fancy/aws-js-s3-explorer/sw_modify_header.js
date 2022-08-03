@@ -15,8 +15,7 @@ self.addEventListener('fetch', (e) => {
         var req = new Request(e.request.url, {
             method: e.request.method,
             headers: {
-                ...e.request.headers,
-                foo: 'bar'
+                ...e.request.headers
             },
             mode: e.request.mode,
             credentials: e.request.credentials,
