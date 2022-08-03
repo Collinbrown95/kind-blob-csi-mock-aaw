@@ -12,4 +12,4 @@ data:
   S3PROXY_IGNORE_UNKNOWN_HEADERS: "true"
   S3PROXY_AUTHORIZATION: none
   JCLOUDS_PROVIDER: filesystem
-  JCLOUDS_FILESYSTEM_BASEDIR: /home/jovyan/buckets/
+  JCLOUDS_FILESYSTEM_BASEDIR: /home/jovyan/buckets
