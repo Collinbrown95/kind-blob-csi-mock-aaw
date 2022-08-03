@@ -2,6 +2,13 @@
 FROM docker.io/andrewgaul/s3proxy:sha-71541ac
 LABEL maintainer="Andrew Gaul <andrew@gaul.org>"
 
+# Copy vendor static files to image - need to mount these to nginx container through
+# shared volume. This is needed so that static files are available in a protected-b
+# environment where network access is restricted.
+COPY manifests/s3proxy/fancy/aws-js-s3-explorer/ /etc/static/aaw-fc/
+COPY manifests/s3proxy/fancy/aws-js-s3-explorer/fonts /etc/static/fonts/
+COPY manifests/s3proxy/fancy/aws-js-s3-explorer/webfonts /etc/static/webfonts/
+
 # need to give all users rwx permissions on /home/* so that when this container starts
 # as non-root user, it has sufficient permission to perform all s3proxy operations
 # against /home/jovyan/buckets
