@@ -17,6 +17,14 @@ data:
           listen       8080;
           server_name  _;
 
+          location ~ ^/s3/fonts/.*$ {
+              root html;
+          }
+
+          location ~ ^/s3/webfonts/.*$ {
+              root html;
+          }
+
           location ~ ^/s3/aaw-fc/.*$ {
               include  /etc/nginx/mime.types;
               root   html;
